@@ -3,8 +3,8 @@
 - The original files are *.xoj (xournal). 
 - PDFs are Ready to print 
 - Originals are in size A5
-- Files *-book.pdf are "booklets" can be printed in A4
-  (it is possible you can print them in letter size, but it is untested).
+- Files *-book.pdf are "booklets" can be printed in A4 and folded into booklets
+  (it is possible you can print them in letter size, but it is untested :)
 
 
 | Week 1 | ch_02_intro_data_model |
