@@ -1,8 +1,8 @@
 * Notes for CSC370
 
 - The original files are *.xoj (xournal). 
-- They are in size A5
-- They are printable in PDF 
+- PDFs are Ready to print 
+- Originals are in size A5
 - Files *-book.pdf are "booklets" can be printed in A4
   (it is possible you can print them in letter size, but it is untested).
 
