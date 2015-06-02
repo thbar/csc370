@@ -1,0 +1,33 @@
+
+
+
+
+#+begin_src sql :engine postgresql :cache yes :exports both :cmdline imdb
+select * from productions limit 10;
+#+end_src
+
+#+RESULTS[a9e3569f8660ea703eccd06523eba9947aea2da0]:
+| id                                                       | title                                             | year | index | notes | attr |
+|----------------------------------------------------------+---------------------------------------------------+------+-------+-------+------|
+| 0000 (????)                                              | 0000                                              |      |       |       |      |
+| 00:00:00 (Zero Hours, Zero Minutes, Zero Seconds) (2012) | 00:00:00 (Zero Hours, Zero Minutes, Zero Seconds) | 2012 |       |       |      |
+| 00.000 (2010)                                            | 00.000                                            | 2010 |       |       |      |
+| 00:00 (2012)                                             | 00:00                                             | 2012 |       |       |      |
+| 00:01:18 (2007)                                          | 00:01:18                                          | 2007 |       |       |      |
+| 00:03:00 Thriller (2013)                                 | 00:03:00 Thriller                                 | 2013 |       |       |      |
+| 00:04:47'' TA... (2012)                                  | 00:04:47'' TA...                                  | 2012 |       |       |      |
+| 00:05'01 (2008)                                          | 00:05'01                                          | 2008 |       |       |      |
+| 00:06:24:11 (2012) (V)                                   | 00:06:24:11                                       | 2012 |       |       | V    |
+| 0:00-H 'Iceman' (1996) (V)                               | 0:00-H 'Iceman'                                   | 1996 |       |       | V    |
+
+
+
+Classes(class, type, country, numGuns, bore, displacement)
+Ships(ship, class, launched)
+Battles(battle, date)
+Outcomes(ship, battle, result)
+
+#+begin_src sql :engine postgresql :cache yes :exports both :cmdline csc370
+Classes(
+class, type, country, numGuns, bore, displacement)
+#+end_src
