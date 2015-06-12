@@ -6,10 +6,3 @@
 - Files *-book.pdf are "booklets" can be printed in A4 and folded into booklets
   (it is possible you can print them in letter size, but it is untested :)
 
-
-| Week 1 | ch_02_intro_data_model |
-|        | ch_02_ra_intro         |
-|        | ch_03_design           |
-| Week 2 | ch_03_design           |
-
-
