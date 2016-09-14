@@ -1,0 +1,112 @@
+#+STARTUP: showall
+#+STARTUP: lognotestate
+#+TAGS:
+#+SEQ_TODO: TODO STARTED DONE DEFERRED CANCELLED | WAITING DELEGATED APPT
+#+DRAWERS: HIDDEN STATE
+#+TITLE: Simple selections
+#+CATEGORY: 
+#+PROPERTY: header-args:sql           :engine postgresql  :exports both :cmdline csc370
+#+PROPERTY: header-args:sqlite          :db /path/to/db  :colnames yes
+#+PROPERTY: header-args:C++             :results output :flags -std=c++14 -Wall --pedantic -Werror
+#+PROPERTY: header-args:R               :results output  :colnames yes
+
+
+
+#+begin_src sql :results output :exports both
+\d
+#+end_src
+
+#+RESULTS[0a37b5a819a4cb3da95619e739ec36f1bdf93bfe]:
+#+begin_example
+List of relations
+Schema	Name	Type	Owner
+public	battles	table	dmg
+public	classes	table	dmg
+public	outcomes	table	dmg
+public	r	table	dmg
+public	s	table	dmg
+public	ships	table	dmg
+public	students	table	dmg
+#+end_example
+
+#+begin_src sql :exports both
+delete from r;
+insert into r values (4,5);
+insert into r values (1,3);
+insert into r values (9,9);
+insert into r values (3,7);
+insert into r values (14,22);
+insert into r values (5,-3);
+#+end_src
+
+
+#+begin_src sql :exports both
+select a, a+10, 'This is my first ''child', b from r where b > 20;
+#+end_src
+
+#+RESULTS[bdaa1903b16857a0e273323122880beacf159e0e]:
+|  a | ?column? | ?column?                |  b |
+|----+----------+-------------------------+----|
+| 14 |       24 | This is my first 'child | 22 |
+
+#+begin_src sql :exports both
+select * from r; 
+#+end_src
+
+#+RESULTS[c3f83367f239c7629856cc44283df72473fb5fed]:
+|  a |  b |
+|----+----|
+|  4 |  5 |
+|  1 |  3 |
+|  9 |  9 |
+|  3 |  7 |
+| 14 | 22 |
+|  5 | -3 |
+
+
+#+begin_src sql :exports both
+with result1 as 
+   (select a as a1,b as b1, * from r where b > 10) 
+select *,* from 
+   result1
+where 
+    a = 14;
+#+end_src
+
+#+RESULTS[15becf722fda6df1b541cedfd579b0ac5b80ce32]:
+| a1 | b1 |  a |  b | a1 | b1 |  a |  b |
+|----+----+----+----+----+----+----+----|
+| 14 | 22 | 14 | 22 | 14 | 22 | 14 | 22 |
+
+
+#+begin_src sql :exports both
+explain
+select a,b from
+  (select a,b from 
+     r
+  where  
+    a > 1) as result1
+where b >  0;
+#+end_src
+
+#+RESULTS[fcbab3b6a19a2b7ea34bfed73b460155ca264c3c]:
+| QUERY PLAN                                         |
+|----------------------------------------------------|
+| Seq Scan on r  (cost=0.00..43.90 rows=251 width=8) |
+| Filter: ((a > 1) AND (b > 0))                      |
+
+#+begin_src sql :exports both 
+select a,b from
+r
+where a in (select b from r);
+#+end_src
+
+#+RESULTS[c27b5a8cce2c083798f763b8203bd5b6d9da143a]:
+| a |  b |
+|---+----|
+| 9 |  9 |
+| 3 |  7 |
+| 5 | -3 |
+
+
+
